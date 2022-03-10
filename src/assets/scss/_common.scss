@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 *{
     padding: 0;
     margin: 0;
@@ -6,4 +8,8 @@
 
 img {
     max-width: 100%;
+}
+
+.container {
+    @include container;
 }

@@ -18,5 +18,9 @@ export default {
 <style lang="scss" scoped>
 .main-content {
     background-color: #1E2D3B;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

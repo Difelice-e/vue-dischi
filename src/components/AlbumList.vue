@@ -1,6 +1,6 @@
 <template>
   <section>
-      <div class="container">
+      <div class="container album-wrapper">
           <AlbumItem 
           v-for="(album, i) in albumList"
           :key="i" 
@@ -43,5 +43,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.album-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
 </style>

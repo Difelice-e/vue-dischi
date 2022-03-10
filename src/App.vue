@@ -22,6 +22,7 @@ export default {
 
 <style lang="scss">
 @import './assets/scss/common.scss';
+@import './assets/scss/mixins.scss';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
