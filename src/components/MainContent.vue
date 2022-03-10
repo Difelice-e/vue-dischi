@@ -1,12 +1,17 @@
 <template>
   <main>
-      main
+    <AlbumList />
   </main>
 </template>
 
 <script>
-export default {
+import AlbumList from './AlbumList.vue'
 
+
+export default {
+    components: {
+    AlbumList
+    },
 }
 </script>
 
