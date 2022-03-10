@@ -1,5 +1,8 @@
 <template>
   <div class="album-card card">
+    <figure>
+        <img :src="album.poster" alt="">
+    </figure>
     {{ album.title }}
   </div>
 </template>

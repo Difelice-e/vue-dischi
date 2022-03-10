@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main-content">
     <AlbumList />
   </main>
 </template>
@@ -16,5 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.main-content {
+    background-color: #1E2D3B;
+}
 </style>
