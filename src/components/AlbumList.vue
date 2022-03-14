@@ -1,11 +1,22 @@
 <template>
   <section>
-      <div class="container genre-select">
+      <div class="container filter-select">
+          <label for="select-genre">Generi Musicali:</label>
           <select name="genre" id="select-genre" v-model="genreFilter">
+              <option value="">Tutti</option>
               <option 
               v-for="(genre, i) in genreList" 
               :key="i" 
               :value="genre">{{ genre }}</option>
+          </select>
+          
+          <label for="select-artist">Artista:</label>
+          <select name="artist" id="select-artist" v-model="artistFilter">
+              <option value="">Tutti</option>
+              <option 
+              v-for="(artist, i) in artistList" 
+              :key="i" 
+              :value="artist">{{ artist }}</option>
           </select>
       </div>
 
@@ -31,7 +42,9 @@ export default {
         return {
             albumList: [],
             genreList: [],
-            genreFilter: ''
+            genreFilter: '',
+            artistList: [],
+            artistFilter: ''
         }
     },
     methods: {
@@ -40,6 +53,7 @@ export default {
             .then( res =>{
                 this.albumList = res.data.response
                 this.getGenre(this.albumList)
+                this.getArtist(this.albumList)
             })
             .catch( err =>{
                 console.warn(err.response)
@@ -53,6 +67,14 @@ export default {
                 }
             });
         },
+        getArtist: function (albumList) { 
+            albumList.forEach((el) => {
+                const artista = el.author;
+                if (!this.artistList.includes(artista)) {
+                    this.artistList.push(artista);
+                }
+            });
+        },
     },
     created() {
         this.fetchAlbum()
@@ -60,25 +82,32 @@ export default {
     computed: {
         filteredAlbum: function() {
             return this.albumList.filter(el => {
-                const {genre} = el
+                const {genre, author} = el
 
-                return genre.toLowerCase().includes(this.genreFilter.toLowerCase())
+                return genre.toLowerCase().includes(this.genreFilter.toLowerCase()) &&
+                author.toLowerCase().includes(this.artistFilter.toLowerCase())
             })
-        }
+        },
     }
 }
 
 </script>
 
 <style lang="scss" scoped>
-.genre-select {
+.filter-select {
     text-align: center;
     margin-bottom: 30px;
+
+    label {
+        color: white;
+        margin-right: 5px;
+    }
 
     select {
         width: 150px;
         background-color: transparent;
         color: var(--app-text);
+        margin-right: 20px;
     }
 }
 
