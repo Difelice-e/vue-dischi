@@ -2,12 +2,13 @@
   <section>
       <div class="container genre-select">
           <select name="genre" id="select-genre">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option 
+              v-for="(genre, i) in genreList" 
+              :key="i" 
+              :value="genre">{{ genre }}</option>
           </select>
       </div>
+
       <div class="container album-wrapper">
           <AlbumItem 
           v-for="(album, i) in albumList"
@@ -29,23 +30,34 @@ export default {
     data() {
         return {
             albumList: [],
+            genreList: [],
         }
     },
     methods: {
         fetchAlbum: function() {
             axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then( res =>{
-                console.log(res.data.response)
                 this.albumList = res.data.response
-                console.log(this.albumList)
             })
             .catch( err =>{
                 console.warn(err.response)
             })
-        }
+        },
+        getGenre: function (albumList) { 
+            console.log(this.albumList, 'album')
+            albumList.forEach((el) => {
+                const genere = el.genre;
+                if (!this.genreList.includes(genere)) {
+                    this.genreList.push(genere);
+                }
+                
+            });
+            console.log(this.genreList)
+        },
     },
     created() {
         this.fetchAlbum()
+        this.getGenre(this.albumList)
     }
 }
 </script>
@@ -58,7 +70,7 @@ export default {
     select {
         width: 150px;
         background-color: transparent;
-        color: white;
+        color: var(--app-text);
     }
 }
 
