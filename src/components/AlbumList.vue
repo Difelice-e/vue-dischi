@@ -38,26 +38,23 @@ export default {
             axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then( res =>{
                 this.albumList = res.data.response
+                this.getGenre(this.albumList)
             })
             .catch( err =>{
                 console.warn(err.response)
             })
         },
         getGenre: function (albumList) { 
-            console.log(this.albumList, 'album')
             albumList.forEach((el) => {
                 const genere = el.genre;
                 if (!this.genreList.includes(genere)) {
                     this.genreList.push(genere);
                 }
-                
             });
-            console.log(this.genreList)
         },
     },
     created() {
         this.fetchAlbum()
-        this.getGenre(this.albumList)
     }
 }
 </script>
