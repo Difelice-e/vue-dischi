@@ -2,7 +2,7 @@
   <section>
       <div class="container filter-select">
           <label for="select-genre">Generi Musicali:</label>
-          <select @change="filtraAlbum" name="genre" id="select-genre" v-model="genreFilter">
+          <select @change="filtraAlbumGenere" name="genre" id="select-genre" v-model="genreFilter">
               <option value="">Tutti</option>
               <option 
               v-for="(genre, i) in genreList" 
@@ -10,14 +10,14 @@
               :value="genre">{{ genre }}</option>
           </select>
           
-          <!-- <label for="select-artist">Artista:</label>
-          <select name="artist" id="select-artist" v-model="artistFilter">
+          <label for="select-artist">Artista:</label>
+          <select @change="filtraAlbumArtista" name="artist" id="select-artist" v-model="artistFilter">
               <option value="">Tutti</option>
               <option 
               v-for="(artist, i) in artistList" 
               :key="i" 
               :value="artist">{{ artist }}</option>
-          </select> -->
+          </select>
       </div>
   </section>
 </template>
@@ -30,12 +30,18 @@ export default {
     },
     data() {
         return {
-        genreFilter: ''
+        genreFilter: '',
+        artistFilter: ''
         }
     },
     methods: {
-    filtraAlbum: function() {
-        this.$emit('cerca', this.genreFilter)
+    filtraAlbumGenere: function() {
+        this.$emit('cercaGenere', this.genreFilter)
+        },
+    
+    filtraAlbumArtista: function() {
+        this.$emit('cercaArtista', this.artistFilter)
+        console.log(this.artistFilter)
         }
     },
 }

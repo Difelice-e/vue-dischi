@@ -1,6 +1,9 @@
 <template>
   <section>
-      <AlbumSelect @cerca="setGenreToFIlter" :genreList="genreList" :artistList="artistList"/>
+      <AlbumSelect 
+      @cercaGenere="setGenreToFIlter" 
+      @cercaArtista="setArtistToFilter"
+      :genreList="genreList" :artistList="artistList"/>
 
       <div class="container album-wrapper">
           <AlbumItem 
@@ -59,8 +62,11 @@ export default {
                 }
             });
         },
-        setGenreToFIlter: function (filter) {
-            this.genreFilter = filter
+        setGenreToFIlter: function (filtroGenere) {
+            this.genreFilter = filtroGenere
+        },
+        setArtistToFilter: function (filtroArtista) {
+            this.artistFilter = filtroArtista
         }
     },
     created() {
