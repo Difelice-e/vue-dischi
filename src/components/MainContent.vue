@@ -20,7 +20,7 @@ export default {
     background-color: var(--app-bg);
     height: calc(100vh - 100px);
     display: flex;
-    align-items: center;
     justify-content: center;
+    padding-top: 50px;
 }
 </style>

@@ -94,6 +94,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section {
+    width: 100%;
+}
+
 .filter-select {
     text-align: center;
     margin-bottom: 30px;
@@ -116,5 +120,6 @@ export default {
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
+    width: 100%;
 }
 </style>
