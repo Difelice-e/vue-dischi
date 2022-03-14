@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .album-card {
-  background-color: #2E3A46;
+  background-color: var(--app-bg-light);
   width: 18%;
   padding: 20px 20px 10px;
 }
@@ -52,11 +52,11 @@ export default {
   }
 
   .album__author {
-      color: #727F7C;
+      color: var(--app-text);
   }
 
   .album__year {
-      color: #727F7C;
+      color: var(--app-text);
   }
 }
 </style>

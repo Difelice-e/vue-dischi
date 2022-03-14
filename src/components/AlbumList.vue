@@ -1,5 +1,13 @@
 <template>
   <section>
+      <div class="container genre-select">
+          <select name="genre" id="select-genre">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+          </select>
+      </div>
       <div class="container album-wrapper">
           <AlbumItem 
           v-for="(album, i) in albumList"
@@ -43,6 +51,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.genre-select {
+    text-align: center;
+    margin-bottom: 30px;
+
+    select {
+        width: 150px;
+        background-color: transparent;
+        color: white;
+    }
+}
+
 .album-wrapper {
     display: flex;
     flex-wrap: wrap;

@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/scss/common.scss';
+@import './assets/scss/common.scss';  // importo extra css 
 @import './assets/scss/mixins.scss';
 
 #app {

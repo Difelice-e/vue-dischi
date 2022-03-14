@@ -1,9 +1,15 @@
-@import './mixins.scss';
+@import './mixins.scss'; 
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+:root {
+  --app-bg: #1E2D3B;
+  --app-bg-light: #2E3A46;
+  --app-text: #727F7C;
 }
 
 img {
