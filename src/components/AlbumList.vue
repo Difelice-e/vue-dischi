@@ -1,7 +1,7 @@
 <template>
   <section>
       <div class="container genre-select">
-          <select name="genre" id="select-genre">
+          <select name="genre" id="select-genre" v-model="genreFilter">
               <option 
               v-for="(genre, i) in genreList" 
               :key="i" 
@@ -11,7 +11,7 @@
 
       <div class="container album-wrapper">
           <AlbumItem 
-          v-for="(album, i) in albumList"
+          v-for="(album, i) in filteredAlbum"
           :key="i" 
           :album="album" />   
       </div>
@@ -31,6 +31,7 @@ export default {
         return {
             albumList: [],
             genreList: [],
+            genreFilter: ''
         }
     },
     methods: {
@@ -55,8 +56,18 @@ export default {
     },
     created() {
         this.fetchAlbum()
+    },
+    computed: {
+        filteredAlbum: function() {
+            return this.albumList.filter(el => {
+                const {genre} = el
+
+                return genre.toLowerCase().includes(this.genreFilter.toLowerCase())
+            })
+        }
     }
 }
+
 </script>
 
 <style lang="scss" scoped>
